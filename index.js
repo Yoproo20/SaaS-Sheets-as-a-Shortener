@@ -16,7 +16,7 @@ export default {
       return Response.redirect(cachedLink, 301);
     }
 
-    // 3. Not in KV? Fetch from Google Sheets
+    // fetch from Google Sheets as backup
     try {
       const res = await fetch(SHEET_API);
       if (!res.ok) throw new Error("Sheets API unavailable");
