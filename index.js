@@ -11,7 +11,7 @@ export default {
     }
 
     // Cloudflare KV first
-    const cachedLink = await env.urlShortner.get(code);
+    const cachedLink = await env.urlShortener.get(code);
     if (cachedLink) {
       return Response.redirect(cachedLink, 301);
     }
@@ -25,7 +25,7 @@ export default {
       const longUrl = links[code];
 
       if (longUrl) {
-        ctx.waitUntil(env.urlShortner.put(code, longUrl, { expirationTtl: 86400 })); 
+        ctx.waitUntil(env.urlShortener.put(code, longUrl, { expirationTtl: 86400 })); 
 
         return Response.redirect(longUrl, 301);
       }
